@@ -1,0 +1,111 @@
+.navigation {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;    
+    background-color: #F1F1F1;
+    color: black;
+    padding-left: 0.3rem;
+    }
+  .navigation-orange {
+    height: 25px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;  
+    background-color: #E45615;
+    color: white;
+    font-size: 0.8rem;
+    padding-left: 0.3rem;
+  }
+
+  .nav-right {
+    float: right;
+    margin-left: auto;
+    padding: 0.3rem;
+    color: #F1F1F1;
+
+  }
+  .links {
+    color: #F1F1F1;
+    text-decoration: none;
+    padding-right: 0.5rem;
+  }
+
+  .logo {    
+    width: 10rem;
+    height: 3rem;
+    padding: 0;
+    margin: 0;
+  }
+  .menu {  
+    height: 50px;  
+    width: 50px;
+  }
+
+  .button {    
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .button-orange {
+    background-color: none;
+    color: grey;    
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px; 
+  }
+
+  .search {
+    width: 20rem;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 10px;
+    border-color: #E45615;
+    font-size: 20px;
+    margin: auto;    
+    border-style: solid;
+  }
+
+  .btn-orange {
+    height: 2.4rem;
+    width: 8rem;
+    background-color: #E45615;
+    border-radius: 10px;
+    border: none;    
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: white;
+    font-size: 2rem;
+  }
+
+  .btn-white {
+    height: 2.4rem;
+    width: 8rem;
+    background-color: white;
+    border-radius: 10px;
+    border: none;    
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: black;
+    font-size: 1.6rem;
+    margin: 0.5rem;
+  }
+
+  .nav-text-small {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-left: 0.3rem;
+  }
