@@ -2,7 +2,6 @@ import '../Styles/Navbar.css'
 import logo from '../assets/logo.png';
 import { CgMenuGridR } from "react-icons/cg";
 import { FaPhoneSquareAlt } from "react-icons/fa";
-import { HiMiniMicrophone } from "react-icons/hi2";
 import { IoPersonOutline } from "react-icons/io5";
 import { RiShoppingCartLine } from "react-icons/ri";
 
