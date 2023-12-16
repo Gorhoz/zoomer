@@ -39,11 +39,11 @@ function Data () {
         .then(response => response.json())
         .then(data => {
             setProducts(data.products);
-            setImages(data.products.map((img)=>img.imageUrl));
-            setBrands(data.products.map((img)=>img.brandName));
-            setNames(data.products.map((img)=>img.name));
-            setPrices(data.products.map((img)=>img.price));
-            setYears(data.products.map((img)=>img.releaseDate));
+            setImages(products.map((img)=>img.imageUrl));
+            setBrands(products.map((img)=>img.brandName));
+            setNames(products.map((img)=>img.name));
+            setPrices(products.map((img)=>img.price));
+            setYears(products.map((img)=>img.releaseDate));
 
         })
         .catch(error => console.error(error))
@@ -83,16 +83,22 @@ function Data () {
                         <span className='grid'><CiGrid41 /> </span> <span className='list'><CiViewList /></span>
                     </div>
                 </div>
-
                 <br />
                 <br />
 
-                <Item 
-                    photo = {images[49]}
-                    price = {prices[49]}
-                    name = {names[49]}
-                    
-                />
+                <br />
+                <br />
+                {products?.map((phone, index)=>{
+                    return (
+                    <Item 
+                    photo = {images[index]}
+                    price = {prices[index]}
+                    name = {names[index]}                    
+                />)
+                })
+
+                }
+
             </>
             }
         

@@ -1,10 +1,10 @@
 .item-block {
     width: 12rem;
     height: 25rem;
-    display: block;
+    display: inline-block;
     align-items: center;
     position: relative;
-    margin: 0.1rem;
+    margin-right: 2.5rem;
   }
 
 .btn-orange {
