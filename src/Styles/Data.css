@@ -31,6 +31,21 @@
   }
 
   .list {
-    font-size: 1.5rem;
-     
+    font-size: 1.5rem;     
   }
+
+  .combined-div {
+    display: inline-flex;
+    /* align-items: center; */
+  }
+
+  .items {
+    display: inline-block;
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 20rem;
+    margin-right: 4rem;    
+  }
+

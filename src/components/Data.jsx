@@ -6,6 +6,9 @@ import Navbar from "./Navbar";
 import { CiGrid41 } from "react-icons/ci";
 import { CiViewList } from "react-icons/ci";
 import Item from "./Item";
+import FilterBar from './Filters'
+// import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
+
 
 
 function Data () {
@@ -20,17 +23,6 @@ function Data () {
     const [loading, setLoading] = useState(false);
     const [searchItem, setSearchItem] = useState('')
     const [filteredProducts, setFilteredProducts] = useState(products)
-
-
-    // const fetchData = async () => {
-    //     try {
-    //       const response = await fetch('https://api.zoommer.ge/v1/Products/v3?CategoryId=855');
-    //       const products = await response.json();
-    //       setProducts(products);
-    //     } catch (error) {
-    //       console.error('Error fetching data:', error);
-    //     }
-    //   };
 
     function fetchData () {
         setLoading(true);
@@ -55,7 +47,6 @@ function Data () {
         
     }, [])
 
-    // console.log(brands)
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
         setSearchItem(searchTerm)
@@ -74,8 +65,6 @@ function Data () {
             <>
                 <Navbar />
                 <br />
-
-
                 <div>
                     <span className='go-back'><FaChevronLeft /> მობილური ტელეფონები</span>
                     <div className='sorting'>
@@ -85,20 +74,26 @@ function Data () {
                 </div>
                 <br />
                 <br />
-
                 <br />
                 <br />
-                {products?.map((phone, index)=>{
-                    return (
-                    <Item 
-                    photo = {images[index]}
-                    price = {prices[index]}
-                    name = {names[index]}                    
-                />)
-                })
-
-                }
-
+                
+                <div className="combined-div">
+                    <div className="sidebar">
+                        <FilterBar />           
+                    </div>
+                    
+                    <div className="items">
+                        {products?.map((phone, index)=>{
+                            return (
+                            <Item 
+                            photo = {images[index]}
+                            price = {prices[index]}
+                            name = {names[index]}                    
+                        />)
+                        })
+                        }
+                    </div>
+                </div>
             </>
             }
         
