@@ -8,7 +8,9 @@ import { RiShoppingCartLine } from "react-icons/ri";
 
 
 
-function Navbar() {
+
+function Navbar(props) {
+
     return (
         <>
         <nav className="navigation-orange">
@@ -37,17 +39,14 @@ function Navbar() {
                     className='search'
                     type="text" 
                     placeholder=" ძიება" 
-                    onChange={(e)=> console.log(e.target.value)}>                    
+                    onChange={props.handleInputChange}>                    
                 </input>    
                 <button className='btn-white'>
                     <RiShoppingCartLine /> <span className='nav-text-small'>კალათა</span>                    
                 </button>  
                 <button className='btn-white'>
                     <IoPersonOutline /> <span className='nav-text-small'>შესვლა</span>                    
-                </button>        
-                {/* <button className='button-mic'>  <HiMiniMicrophone /> </button>                          
-                <button className='button-medium blue'> <IoPersonOutline />Sign in</button> */}
-                
+                </button>                    
          </nav>
       </>
       )

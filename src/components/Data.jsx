@@ -7,7 +7,7 @@ import { CiGrid41 } from "react-icons/ci";
 import { CiViewList } from "react-icons/ci";
 import Item from "./Item";
 import FilterBar from './Filters'
-// import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
+
 
 
 
@@ -18,6 +18,7 @@ function Data () {
     const [prices, setPrices] = useState([]);
     const [names, setNames] = useState([]);
     const [years, setYears] = useState([]);
+    const [input, setInput] = useState('');
     
     
     const [loading, setLoading] = useState(false);
@@ -31,11 +32,7 @@ function Data () {
         .then(response => response.json())
         .then(data => {
             setProducts(data.products);
-            setImages(products.map((img)=>img.imageUrl));
-            setBrands(products.map((img)=>img.brandName));
-            setNames(products.map((img)=>img.name));
-            setPrices(products.map((img)=>img.price));
-            setYears(products.map((img)=>img.releaseDate));
+
 
         })
         .catch(error => console.error(error))
@@ -47,6 +44,7 @@ function Data () {
         
     }, [])
 
+
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
         setSearchItem(searchTerm)
@@ -56,14 +54,25 @@ function Data () {
         );
     
         setFilteredProducts(filteredItems);
+        setImages(filteredItems.map((p)=>p.imageUrl));
+        setBrands(filteredItems.map((p)=>p.brandName));
+        setNames(filteredItems.map((p)=>p.name));
+        setPrices(filteredItems.map((p)=>p.price));
+        setYears(filteredItems.map((p)=>p.releaseDate));
+        console.log(filteredItems)
+        console.log(filteredItems[0].imageUrl)
 
       };
 
+
+      
     return (        
         <>
             {loading === true ? <div>loading...</div>:
             <>
-                <Navbar />
+                <Navbar 
+                    handleInputChange={handleInputChange}
+                />
                 <br />
                 <div>
                     <span className='go-back'><FaChevronLeft /> მობილური ტელეფონები</span>
@@ -83,7 +92,7 @@ function Data () {
                     </div>
                     
                     <div className="items">
-                        {products?.map((phone, index)=>{
+                        {filteredProducts?.map((phone, index)=>{
                             return (
                             <Item 
                             photo = {images[index]}
