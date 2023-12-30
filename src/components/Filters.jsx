@@ -14,39 +14,28 @@ function FilterBar(props) {
                 className='price'
                 type="number" 
                 placeholder='MIN:         0 ₾'
-                onChange={(e)=> console.log(e.target.value)}>                    
+                onChange={props.handleMinPrice}>                    
             </input>  
             <input 
                 className='price'
                 type="number" 
                 placeholder='MAX:    5799 ₾'
-                onChange={(e)=> console.log(e.target.value)}>                    
+                onChange={props.handleMaxPrice}>                    
             </input> 
+            <div className='checkbox'>
+            <p><b>გამოშვების თარიღი</b></p>
+                <input type="checkbox" id="2018" name="2018" value="2018" onClick={props.handleCheckbox}></input>
+                <label for="2018"> 2018 </label><br></br>
+                <input type="checkbox" id="2019" name="2019" value="2019" onClick={props.handleCheckbox}></input>
+                <label for="2019"> 2019 </label><br></br>
+                <input type="checkbox" id="2020" name="2020" value="2020" onClick={props.handleCheckbox}></input>
+                <label for="2020"> 2020 </label><br></br>
+                <input type="checkbox" id="2021" name="2021" value="2021" onClick={props.handleCheckbox}></input>
+                <label for="2021"> 2021 </label><br></br>
+            </div>
         </div>
 
     </>
     )
 }
 export default FilterBar;
-
-
-
-
-
-
-
-// import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
-
-
-// function Filters() {
-//     <Sidebar>
-//         <Menu>
-//             <SubMenu label="Charts">
-//             <MenuItem> Pie charts </MenuItem>
-//             <MenuItem> Line charts </MenuItem>
-//             </SubMenu>
-//             <MenuItem> Documentation </MenuItem>
-//             <MenuItem> Calendar </MenuItem>
-//         </Menu>
-//     </Sidebar>;
-// }

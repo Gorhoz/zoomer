@@ -9,21 +9,20 @@ import Item from "./Item";
 import FilterBar from './Filters'
 
 
-
-
 function Data () {
     const [products, setProducts] = useState([]);
     const [images, setImages] = useState([]);
     const [brands, setBrands] = useState([]);
     const [prices, setPrices] = useState([]);
     const [names, setNames] = useState([]);
-    const [years, setYears] = useState([]);
-    const [input, setInput] = useState('');
-    
-    
+    const [years, setYears] = useState([]);    
     const [loading, setLoading] = useState(false);
     const [searchItem, setSearchItem] = useState('')
-    const [filteredProducts, setFilteredProducts] = useState(products)
+    const [filteredProducts, setFilteredProducts] = useState([])
+    const [minPrice, setMinPrice] = useState(0)
+    const [maxPrice, setMaxPrice] = useState(0)
+    const [checkbox, setCheckbox] = useState(0)
+
 
     function fetchData () {
         setLoading(true);
@@ -32,40 +31,58 @@ function Data () {
         .then(response => response.json())
         .then(data => {
             setProducts(data.products);
-
-
         })
         .catch(error => console.error(error))
         .finally(()=> setLoading(false))
     }
 
     useEffect(()=> {
-        fetchData()
-        
+        fetchData()        
     }, [])
+
+    useEffect(()=> {
+        handleMinPrice       
+    }, [minPrice])
+
 
 
     const handleInputChange = (e) => {
         const searchTerm = e.target.value;
-        setSearchItem(searchTerm)
-    
+        setSearchItem(searchTerm)    
         const filteredItems = products.filter((p) =>
-        p.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    
+            p.name.toLowerCase().includes(searchItem.toLowerCase())
+        );        
         setFilteredProducts(filteredItems);
         setImages(filteredItems.map((p)=>p.imageUrl));
         setBrands(filteredItems.map((p)=>p.brandName));
         setNames(filteredItems.map((p)=>p.name));
         setPrices(filteredItems.map((p)=>p.price));
         setYears(filteredItems.map((p)=>p.releaseDate));
-        console.log(filteredItems)
-        console.log(filteredItems[0].imageUrl)
+    };
 
-      };
-
-
+    const handleMinPrice = (e) => {
+        setMinPrice(e.target.value);
+        const filteredByMinPrice = products.filter((p)=>
+           Number(minPrice)<=Number(p.price)
+        )
+        setFilteredProducts(filteredByMinPrice); 
+        console.log(filteredProducts?.map((p)=>p.price))
+        console.log(Number(minPrice)+2)       
+    }
       
+    const handleMaxPrice = (e) => {
+        setMaxPrice(e.target.value);
+        const filteredByMaxPrice = products.filter((p)=>
+           Number(maxPrice)>=Number(p.price)
+        )
+        setFilteredProducts(filteredByMaxPrice);         
+    }
+
+    const handleCheckbox = (e) => {
+        setCheckbox(e.target.value);
+        console.log(checkbox)
+    }
+
     return (        
         <>
             {loading === true ? <div>loading...</div>:
@@ -88,7 +105,11 @@ function Data () {
                 
                 <div className="combined-div">
                     <div className="sidebar">
-                        <FilterBar />           
+                        <FilterBar 
+                            handleMinPrice={handleMinPrice}
+                            handleMaxPrice={handleMaxPrice}
+                            handleCheckbox={handleCheckbox}
+                        />           
                     </div>
                     
                     <div className="items">
@@ -105,18 +126,6 @@ function Data () {
                 </div>
             </>
             }
-        
-        {/* <div>
-            
-            {loading && "Products are loading..."}
-
-            <input type="text" placeholder="Product Name" onChange={handleInputChange}></input>
-            <br />
-            {filteredProducts.map((item, index) => (
-            <p key={index}>{item.name}</p>))}
-            <br />
-        
-        </div> */}
         </>
     )
 
