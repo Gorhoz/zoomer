@@ -7,6 +7,7 @@ import { CiGrid41 } from "react-icons/ci";
 import { CiViewList } from "react-icons/ci";
 import Item from "./Item";
 import FilterBar from './Filters'
+import moment from "moment";
 
 
 function Data () {
@@ -65,9 +66,7 @@ function Data () {
         const filteredByMinPrice = products.filter((p)=>
            Number(minPrice)<=Number(p.price)
         )
-        setFilteredProducts(filteredByMinPrice); 
-        console.log(filteredProducts?.map((p)=>p.price))
-        console.log(Number(minPrice)+2)       
+        setFilteredProducts(filteredByMinPrice);      
     }
       
     const handleMaxPrice = (e) => {
@@ -81,6 +80,10 @@ function Data () {
     const handleCheckbox = (e) => {
         setCheckbox(e.target.value);
         console.log(checkbox)
+        const filterYear = products.filter((p)=>
+        Number(checkbox)===Number(moment(p.releaseDate).utc().format('YYYY'))
+     )
+     setFilteredProducts(filterYear); 
     }
 
     return (        

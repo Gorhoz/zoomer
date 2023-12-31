@@ -32,6 +32,10 @@ function FilterBar(props) {
                 <label for="2020"> 2020 </label><br></br>
                 <input type="checkbox" id="2021" name="2021" value="2021" onClick={props.handleCheckbox}></input>
                 <label for="2021"> 2021 </label><br></br>
+                <input type="checkbox" id="2022" name="2022" value="2022" onClick={props.handleCheckbox}></input>
+                <label for="2022"> 2022 </label><br></br>
+                <input type="checkbox" id="2023" name="2023" value="2023" onClick={props.handleCheckbox}></input>
+                <label for="2023"> 2023 </label><br></br>
             </div>
         </div>
 
